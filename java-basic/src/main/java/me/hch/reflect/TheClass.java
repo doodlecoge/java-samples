@@ -15,4 +15,8 @@ public class TheClass {
     public String getThePrivateField() {
         return thePrivateField;
     }
+
+    private String privateMethod(String arg) {
+        return "message returned from privateMethod(), value of the argument is [" + arg + "]";
+    }
 }
