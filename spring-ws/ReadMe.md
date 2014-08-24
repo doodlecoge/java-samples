@@ -9,4 +9,7 @@ How to write a Spring Web Service
 ```
 It seems that the client can send request and get a response
 without wsdl. The wsdl just let developers know what to send.
+And even you can specify a valid xml file as the contract,
+spring dose not check if it is a real wsdl file or if it
+convince to the logic of your endpoint service.
 ```

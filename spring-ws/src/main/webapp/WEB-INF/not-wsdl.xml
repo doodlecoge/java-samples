@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<BookShop
+        xmlns="http://service.hch.me"
+        xmlns:tns="http://service.hch.me"
+        targetNamespace="http://hch.me"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://service.hch.me demo.xsd">
+
+    <Author name="huaichao"/>
+    <Book author="huaichao"/>
+</BookShop>

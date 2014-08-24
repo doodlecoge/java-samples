@@ -41,7 +41,14 @@
         which just display a wsdl to 3rd party developers and let them
         know what to send or what the service accepts.
     -->
-    <sws:static-wsdl location="/WEB-INF/hello.wsdl" id="hello"/>
+    <!--<sws:static-wsdl location="/WEB-INF/hello.wsdl2.0.wsdl" id="hello"/>-->
+
+    <!--
+        this is just a plain xml not even wsdl, but spring dose not
+        check it. The service is there no matter what content you
+        are specifying as long as it is a valid xml.
+    -->
+    <sws:static-wsdl location="/WEB-INF/not-wsdl.xml" id="hello"/>
 
 
 </beans>

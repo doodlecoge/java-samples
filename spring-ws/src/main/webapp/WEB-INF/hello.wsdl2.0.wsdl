@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<description
+        xmlns="http://www.w3.org/ns/wsdl"
+        targetNamespace="abc"
+        xmlns:tns="http://schema.hch.me"
+        xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
+        xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:wsdlx="http://www.w3.org/ns/wsdl-extensions">
+
+    <types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schema.hch.me"
+                        schemaLocation="hello.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <interface name="HelloInterface">
+        <fault name="invalidDataFault" element="tns:HelloFault"/>
+
+        <operation name="Hello"
+                   pattern="http://www.w3.org/ns/wsdl/in-out"
+                   style="http://www.w3.org/ns/wsdl/style/iri"
+                   wsdlx:safe="true">
+            <input messageLabel="In" element="tns:HelloRequest"/>
+            <output messageLabel="Out" element="tns:HelloResponse"/>
+            <outfault messageLabel="Out" ref="tns:invalidDataFault"/>
+        </operation>
+
+    </interface>
+
+    <binding name="HelloBinding"
+              interface="tns:HelloInterface"
+              type="http://www.w3.org/ns/wsdl/soap"
+              wsoap:protocol="http://www.w3.org/2003/05/soap/bindings/HTTP/">
+
+        <fault ref="tns:invalidDataFault"
+               wsoap:code="soap:Sender"/>
+
+        <operation ref="tns:Hello"
+                   wsoap:mep="http://www.w3.org/2003/05/soap/mep/soap-response"/>
+
+    </binding>
+
+    <service name="reservationService"
+             interface="tns:HelloInterface">
+
+        <endpoint name="HelloEndpoint"
+                  binding="tns:HelloBinding"
+                  address="http://greath.example.com/2004/reservation"/>
+
+    </service>
+
+</description>

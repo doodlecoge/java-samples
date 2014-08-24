@@ -2,8 +2,8 @@
 <!-- root element wsdl:definitions defines set of related services -->
 <wsdl:definitions name="EndorsementSearch"
                   targetNamespace="http://service.hch.me"
-                  xmlns:es="hello.wsdl"
-                  xmlns:esxsd="hello.xsd"
+                  xmlns:es="http://service.hch.me"
+                  xmlns:tns="http://schema.hch.me"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
 
@@ -13,19 +13,19 @@
     -->
     <wsdl:types>
         <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-            <xsd:import namespace="http://service.hch.me"
+            <xsd:import namespace="http://schema.hch.me"
                         schemaLocation="hello.xsd"/>
         </xsd:schema>
     </wsdl:types>
 
     <wsdl:message name="HelloRequestMessage">
-        <wsdl:part name="body" element="esxsd:HelloRequest"/>
+        <wsdl:part name="body" element="tns:HelloRequest"/>
     </wsdl:message>
     <wsdl:message name="HelloResponseMessage">
-        <wsdl:part name="body" element="esxsd:HelloResponse"/>
+        <wsdl:part name="body" element="tns:HelloResponse"/>
     </wsdl:message>
     <wsdl:message name="HelloFaultMessage">
-        <wsdl:part name="body" element="esxsd:HelloFault"/>
+        <wsdl:part name="body" element="tns:HelloFault"/>
     </wsdl:message>
 
     <!-- wsdl:portType describes messages in an operation -->
