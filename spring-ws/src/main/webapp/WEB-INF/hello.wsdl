@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!-- root element wsdl:definitions defines set of related services -->
+<wsdl:definitions name="EndorsementSearch"
+                  targetNamespace="http://service.hch.me"
+                  xmlns:es="hello.wsdl"
+                  xmlns:esxsd="hello.xsd"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+    <!--
+        wsdl:types encapsulates schema definitions of communication types;
+        here using xsd.
+    -->
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://service.hch.me"
+                        schemaLocation="hello.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="HelloRequestMessage">
+        <wsdl:part name="body" element="esxsd:HelloRequest"/>
+    </wsdl:message>
+    <wsdl:message name="HelloResponseMessage">
+        <wsdl:part name="body" element="esxsd:HelloResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HelloFaultMessage">
+        <wsdl:part name="body" element="esxsd:HelloFault"/>
+    </wsdl:message>
+
+    <!-- wsdl:portType describes messages in an operation -->
+    <wsdl:portType name="HelloPortType">
+
+        <!-- the value of wsdl:operation eludes me -->
+        <wsdl:operation name="Hello">
+            <wsdl:input message="es:HelloRequestMessage"/>
+            <wsdl:output message="es:HelloResponseMessage"/>
+            <wsdl:fault message="es:HelloFaultMessage" name="aaa"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="HelloSoapBinding" type="es:HelloPortType">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="Hello">
+            <soap:operation
+                    soapAction="helloAction"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://service.hch.me"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://service.hch.me"/>
+            </wsdl:output>
+            <wsdl:fault name="aaa">
+                <soap:body use="literal" namespace="http://service.hch.me"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- wsdl:service names a new service "EndorsementSearchService" -->
+    <wsdl:service name="HelloService">
+        <wsdl:documentation>Hello Web Service</wsdl:documentation>
+        <wsdl:port name="HelloPort" binding="es:HelloSoapBinding">
+            <soap:address location="http://localhost:8080/Hello"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

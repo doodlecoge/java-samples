@@ -1,0 +1,7 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://service.hch.me"
+        elementFormDefault="qualified">
+    <element name="HelloRequest" type="string"/>
+    <element name="HelloResponse" type="string"/>
+    <element name="HelloFault" type="string"/>
+</schema>

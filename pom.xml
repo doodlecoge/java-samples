@@ -9,6 +9,7 @@
     <version>1.0.0</version>
     <modules>
         <module>java-basic</module>
+        <module>spring-ws</module>
     </modules>
     <packaging>pom</packaging>
 </project>
